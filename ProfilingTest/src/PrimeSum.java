@@ -3,7 +3,7 @@ public class PrimeSum {
 
     public static int find_the_square_root() {
         int res = -1;
-        for (int i = 2; i <= MAX_INT; i++) {
+        for (int i = 2; i <= Math.sqrt(MAX_INT); i++) {
             if (i * i < MAX_INT && i * i > res) {
                 res = i * i;
             }
