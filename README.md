@@ -85,7 +85,8 @@ public class PrimeSum {
 
 مطابق شکل زیر، profiling ابزار yourkit مشخص است.
 
-![profiling with inef](https://github.com/user-attachments/assets/4ac54b48-9b97-4937-8bb8-04d026a2be4d)
+![image](https://github.com/user-attachments/assets/ebfc5809-e4ca-46c2-b65b-368744fec6c5)
+
 
 
 مطابق کد، ما توان ۲ی اعداد را تا قبل از خود مقدار بزرگ‌ترین عدد int در جاوا ادامه می‌دهیم، در صورتی که می‌دانیم که می‌توانیم این حلقه را تا کمتر از Square بزرگ‌ترین عدد ادامه دهیم. زیرا مقدار i به صورتی که i>square(max int) باشد، قطعا i*i نیز بزرگ‌تر از max int می‌باشد. پس کد را ویرایش می‌کنیم. کد پس از ویرایش عبات است از:
