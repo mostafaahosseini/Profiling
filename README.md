@@ -60,3 +60,61 @@
 ## قسمت دوم 
 
 
+برای این قسمت، ما یک برنامه پیاده‌سازی کردیم که بر اساس آن بزرگ‌ترین عدد مربع کامل کوچک‌تر از بزرگ‌ترین مقدار مجاز int در java (یعنی 2147483647) را پیدا کنیم. برای این کار، مطابق شکل زیر، ما یک حلقه داریم و تمامی i * iها را تا قبل از این مقدار چک می‌کنیم.
+
+```
+public class PrimeSum {
+    final static int MAX_INT = 2147483647;
+
+    public static int find_the_square_root() {
+        int res = -1;
+        for (int i = 2; i <= MAX_INT; i++) {
+            if (i * i < MAX_INT && i * i > res) {
+                res = i * i;
+            }
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        int result = find_the_square_root();
+        System.out.println(result);
+    }
+}
+```
+
+مطابق شکل زیر، profiling ابزار yourkit مشخص است.
+
+![profiling with inef](https://github.com/user-attachments/assets/4ac54b48-9b97-4937-8bb8-04d026a2be4d)
+
+
+مطابق کد، ما توان ۲ی اعداد را تا قبل از خود مقدار بزرگ‌ترین عدد int در جاوا ادامه می‌دهیم، در صورتی که می‌دانیم که می‌توانیم این حلقه را تا کمتر از Square بزرگ‌ترین عدد ادامه دهیم. زیرا مقدار i به صورتی که i>square(max int) باشد، قطعا i*i نیز بزرگ‌تر از max int می‌باشد. پس کد را ویرایش می‌کنیم. کد پس از ویرایش عبات است از:
+
+
+```
+public class PrimeSum {
+    final static int MAX_INT = 2147483647;
+
+    public static int find_the_square_root() {
+        int res = -1;
+        for (int i = 2; i <= Math.sqrt(MAX_INT); i++) {
+            if (i * i < MAX_INT && i * i > res) {
+                res = i * i;
+            }
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        int result = find_the_square_root();
+        System.out.println(result);
+    }
+}
+```
+حال profiling را پس از اپتیمایز کردن این کد مشاهده می‌کنیم.
+
+![profiling modified](https://github.com/user-attachments/assets/225a858d-ae5b-446c-9f91-84291933f980)
+
+
+ما برای اینکه بتوانیم کد اپتیمایز شده را profile کنیم، ابتدا یک wait هم گذاشتیم. به همین دلیل است که ابتدا مقدار CPU بالا است. پس از آن زمانی که به ادامه‌ی کد می‌رسد، مقدار cpu usage به شدت کم می‌شود و خروجی کد تقریبا ۱۰ برابر سریع‌تر (از نظر زمانی) نسبت به کد قبل چاپ می‌شود.
+
