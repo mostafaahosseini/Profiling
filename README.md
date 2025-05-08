@@ -48,12 +48,14 @@
 
 با تغییر دادن ArrayList به یک آرایه‌ی استاتیک، خطایی که قبلا بخاطر  heap می‌خوردیم را دیگر نمی‌خوریم. همچنین بر خلاف کد قبل، به خروجی نیز دست پیدا می‌کنیم.
 
-![image](https://github.com/user-attachments/assets/4dc5730c-688e-4cb7-af77-7e17b01f3bc8)
+![image](https://github.com/user-attachments/assets/e450b940-d990-4bcc-8973-7abbf3b766a6)
+
 
 
 مطابق عکس‌های زیر، profiling کد جدید بعد از تغییر تابع temp به شکل زیر می‌باشد:
 
-![image](https://github.com/user-attachments/assets/67c94cb4-fea2-44e7-bd05-99e4c667592f)
+![image](https://github.com/user-attachments/assets/2946ec92-bd62-4581-9e91-c6026d2d88ac)
+
 
 ## قسمت دوم 
 
